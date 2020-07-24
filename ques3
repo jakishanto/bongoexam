@@ -1,0 +1,34 @@
+class VideoView {
+       void play(){...}
+       void forward(){...}
+       void rewind(){...}
+       void stop(){...}
+       boolean isPlaying(){...}
+   }
+
+  class VideoPlayerApp {
+      VideoView viewer = new VideoView();
+
+      Button playButton = new Button(new OnClick(){
+           if(viewer.isPlaying()){
+               viewer.stop();
+           } else{
+               viewer.play();
+           }
+       });
+
+      Button forwardButton = new Button(new OnClick(){
+          if(viewer.isPlaying()){
+              viewer.stop();
+          }
+          viewer.forward();
+       });
+
+      Button rewindButton = new Button(new OnClick(){
+          if(viewer.isPlaying()){
+              viewer.stop();
+          }
+         viewer.rewind();
+       });
+
+   }
