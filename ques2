@@ -1,0 +1,59 @@
+#To use the pattern to create car and plane class
+class VehicleFactory {
+    public Vehicle create(int type) {
+        if(type == 0){ 
+             return new Car();
+        }
+        return new Plane();
+    }
+  }
+
+  class Car implements Vehicle {
+      int set_num_of_wheels(){return 4}
+      int set_num_of_passengers() {return 5}
+      boolean has_gas() {return true}
+  }
+  
+  class Plane implements Vehicle {
+      int set_num_of_wheels(){return 5}
+      int set_num_of_passengers() {return 200}
+      boolean has_gas() {return true}
+  }
+  
+  
+  
+  #To use a different design pattern for this solution
+  class VehicleBuilder {
+         int num_of_wheels = 0;
+        int num_of_passengers = 0;
+        boolean has_gas = false;
+
+     public VehicleBuilder wheels(int wheels) {
+         num_of_wheels = wheels
+         return this;
+     }
+
+     public VehicleBuilder passengers(int passengers) {
+         num_of_passengers = passengers
+         return this;
+     }
+
+     public VehicleBuilder gas(boolean gas) {
+         has_gas = gas
+         return this;
+     }
+
+    public Vehicle build() {
+         return new VehicleImpl(num_of_wheels, num_of_passengers, has_gas);
+        
+    }
+  }
+
+  class VehicleImpl(int wheels, int passengers,boolean gas) implements Vehicle {
+      int set_num_of_wheels(){return wheels}
+      int set_num_of_passengers() {return passengers}
+      boolean has_gas() {return gas}
+  }
+  
+  
+  
